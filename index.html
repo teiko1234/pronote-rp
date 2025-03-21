@@ -1,45 +1,72 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pronote RP</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .container { width: 300px; margin: auto; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid black; padding: 10px; }
-        .hidden { display: none; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="login">
+    <header>
+        <h1>Pronote RP</h1>
+        <p>Bienvenue sur votre espace scolaire RP</p>
+    </header>
+
+    <div class="container">
         <h2>Connexion</h2>
-        <input type="text" id="username" placeholder="Nom d'utilisateur"><br><br>
-        <button onclick="login()">Se connecter</button>
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Votre pseudo" />
+            <input type="password" id="password" placeholder="Mot de passe" />
+            <select id="role">
+                <option value="eleve">Élève</option>
+                <option value="professeur">Professeur</option>
+                <option value="vie_scolaire">Vie Scolaire</option>
+            </select>
+            <button onclick="connect()">Se connecter</button>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+            <h2>Tableau de bord</h2>
+            
+            <!-- Vie scolaire dashboard -->
+            <div id="vieScolaireDashboard" style="display: none;">
+                <h3>Vie Scolaire - Créer un groupe</h3>
+                <input type="text" id="newGroupName" placeholder="Nom du groupe (ex : Mathématiques)" />
+                <button onclick="createGroup()">Créer un groupe</button>
+                <br><br>
+                <h3>Ajouter des élèves au groupe</h3>
+                <select id="studentsList">
+                    <option value="eleve1">Élève 1</option>
+                    <option value="eleve2">Élève 2</option>
+                    <option value="eleve3">Élève 3</option>
+                </select>
+                <button onclick="addStudentToGroup()">Ajouter au groupe</button>
+                <br><br>
+                <h3>Liste des groupes créés :</h3>
+                <ul id="groupList"></ul>
+            </div>
+
+            <!-- Professeur dashboard -->
+            <div id="professorDashboard" style="display: none;">
+                <h3>Professeur - Gérer la classe</h3>
+                <select id="classCategory">
+                    <option value="maths">Mathématiques</option>
+                    <option value="francais">Français</option>
+                </select>
+                <br><br>
+                <h3>Élèves dans votre classe :</h3>
+                <ul id="classList"></ul>
+                <button onclick="addGrade()">Ajouter une note</button>
+                <button onclick="markAbsence()">Marquer une absence</button>
+            </div>
+        </div>
+
+        <div id="restrictedMessage" class="restricted" style="display: none;">
+            Vous n'avez pas accès à ce tableau.
+        </div>
     </div>
-    
-    <div class="container hidden" id="dashboard">
-        <h2>Bienvenue sur Pronote RP</h2>
-        <h3>Notes</h3>
-        <table>
-            <tr><th>Matière</th><th>Note</th></tr>
-            <tr><td>Maths</td><td>15/20</td></tr>
-            <tr><td>Français</td><td>14/20</td></tr>
-        </table>
-        
-        <h3>Absences</h3>
-        <table>
-            <tr><th>Date</th><th>Motif</th></tr>
-            <tr><td>12/03/2025</td><td>Malade</td></tr>
-        </table>
-    </div>
-    
-    <script>
-        function login() {
-            document.getElementById("login").classList.add("hidden");
-            document.getElementById("dashboard").classList.remove("hidden");
-        }
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
