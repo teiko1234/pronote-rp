@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronote RP</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { width: 300px; margin: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 10px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container" id="login">
+        <h2>Connexion</h2>
+        <input type="text" id="username" placeholder="Nom d'utilisateur"><br><br>
+        <button onclick="login()">Se connecter</button>
+    </div>
+    
+    <div class="container hidden" id="dashboard">
+        <h2>Bienvenue sur Pronote RP</h2>
+        <h3>Notes</h3>
+        <table>
+            <tr><th>Matière</th><th>Note</th></tr>
+            <tr><td>Maths</td><td>15/20</td></tr>
+            <tr><td>Français</td><td>14/20</td></tr>
+        </table>
+        
+        <h3>Absences</h3>
+        <table>
+            <tr><th>Date</th><th>Motif</th></tr>
+            <tr><td>12/03/2025</td><td>Malade</td></tr>
+        </table>
+    </div>
+    
+    <script>
+        function login() {
+            document.getElementById("login").classList.add("hidden");
+            document.getElementById("dashboard").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
